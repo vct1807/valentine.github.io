@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Animated Webpage</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      background: url('https://images.template.net/73924/Free-red-bokeh-heart-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      animation: gradientBackground 10s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBackground {
+      0% {
+        background: url('https://images.template.net/73924/Free-red-bokeh-heart-background.jpg') no-repeat center center fixed;
+        background-size: cover;
+      }
+      50% {
+        background: url('https://images.template.net/73924/Free-red-bokeh-heart-background.jpg') no-repeat center center fixed;
+        background-size: cover;
+      }
+      100% {
+        background: url('https://images.template.net/73924/Free-red-bokeh-heart-background.jpg') no-repeat center center fixed;
+        background-size: cover;
+      }
+    }
+
+    /* Floating Hearts Animation */
+    .heart {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      clip-path: polygon(50% 0%, 0% 35%, 50% 100%, 100% 35%);
+      animation: float 5s infinite ease-in;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    @keyframes float {
+      0% {
+        top: 100%;
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        top: -10%;
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+
+    /* Floating Heart Generator */
+    function generateHearts() {
+      const heartCount = 30; // Number of hearts to generate
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+
+        // Set random positions and animation delays for each heart
+        const size = Math.random() * 20 + 20; // Size between 20 and 40px
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        heart.style.animationDelay = `${Math.random() * 2}s`;
+
+        document.body.appendChild(heart);
+      }
+    }
+
+    /* Style for Valentine's Day Message */
+    .message {
+      font-size: 3rem;
+      color: white;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Style for the Heartfelt Message Button */
+    .message-tab {
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    .message-tab:hover {
+      background-color: #ff4785;
+    }
+
+    /* Heartfelt message style with rose background */
+    .heartfelt-message {
+      display: none;
+      text-align: center;
+      font-size: 1.5rem;
+      color: white;
+      position: absolute;
+      bottom: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: url('https://www.w3schools.com/w3images/roses.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 90%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      animation: fadeInMessage 3s ease-in-out forwards;
+    }
+
+    @keyframes fadeInMessage {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message">𝐻𝒶𝓅𝓅𝓎 𝒱𝒶𝓁𝑒𝓃𝓉𝒾𝓃𝑒𝓈 𝒟𝒶y!</div>
+  
+  <button class="message-tab" onclick="window.location.href='vct.html'">Click For a Surprise!!!</button>
+
+  <script>
+    // Function to toggle the heartfelt message visibility
+    function toggleMessage() {
+      const message = document.getElementById('heartfeltMessage');
+      message.style.display = message.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Initialize hearts on page load
+    window.onload = generateHearts;

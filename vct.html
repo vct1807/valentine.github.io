@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and general layout */
+        body {
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background-color: #ff66b2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Heart animation background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://static.vecteezy.com/system/resources/previews/000/536/042/original/heart-abstract-pattern-background-love-doodle-style-pattern-vector-illustration.jpg') no-repeat center center fixed;
+            background-size: cover;
+            animation: animateHearts 8s linear infinite;
+        }
+
+        /* Floating hearts animation */
+        @keyframes animateHearts {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Main content */
+        .content {
+            position: relative;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* New animated cat image */
+        .cute-cat {
+            width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Message style */
+        .message {
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            animation: glow 1.5s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        /* Glowing text effect */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px #ff00cc, 0 0 30px #ff66b2;
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px #ff00cc, 0 0 50px #ff66b2;
+            }
+        }
+
+        /* Button styling */
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: white;
+            background-color: #ff00cc;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff66b2;
+        }
+
+        /* Yes button */
+        .yes-button {
+            background-color: #ff00cc;
+        }
+
+        /* No button */
+        .no-button {
+            background-color: #ff3366;
+        }
+
+        .button:active {
+            transform: scale(0.98);
+        }
+
+        /* Grow effect for the Yes button */
+        .yes-grow {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+<!-- Audio Element -->
+    <audio autoplay loop>
+        <source src="https://youtu.be/4M1qvEn3i4Y?si=NTcE9ER70AQ62zp6 file.mp3" type="audio/mp3">
+        
+    </audio>
+    <div class="background">
+        <div class="heart-animation"></div>
+    </div>
+
+    <div class="content">
+        <!-- Updated cat GIF link -->
+        <img src="https://i.pinimg.com/originals/3c/31/ef/3c31efc42b6e4ce96afa55099dfbba25.gif" alt="Cute Cat" class="cute-cat">
+        <h1 class="message">Will you be my Valentine?</h1>
+        <div class="button-container">
+            <button class="button yes-button" id="yesBtn" onclick="yesResponse()">Yes</button>
+            <button class="button no-button" onclick="noResponse()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle "Yes" response and redirect to another page
+        function yesResponse() {
+            // Redirecting to another page when "Yes" is clicked
+            window.location.href = 'special_message.html';  // Change this URL to your desired page
+        }
+
+        // Function to handle "No" response and grow "Yes" button
+        function noResponse() {
+            var yesButton = document.getElementById('yesBtn');
+            yesButton.classList.add('yes-grow'); // Add the grow effect class
+            // Redirect to new.html page when "No" is clicked
+            window.location.href = 'new.html';  // Link to new.html page
+        }
+    </script>
+</body>
+</html>
